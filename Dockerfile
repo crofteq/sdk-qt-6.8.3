@@ -25,7 +25,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     update-ca-certificates
 
 # Install Just - the command runner
-ARG JUST_VERSION=1.45.0
+ARG JUST_VERSION=1.49.0
 # COPY install_just.sh /tmp/
 # RUN chmod a+x /tmp/install_just.sh && /tmp/install_just.sh --tag ${JUST_VERSION} --to /usr/local/bin
 RUN curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --tag ${JUST_VERSION} --to /usr/local/bin
@@ -94,9 +94,9 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     sudo=1.9.* \
     && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     # turn the detected dubious ownership message off
-    git config --global --add safe.directory '*' && \
+    git config --system --add safe.directory '*' && \
     # turn the detached message off
-    git config --global advice.detachedHead false
+    git config --system advice.detachedHead false
 
 # Install the windows environment (wine64), git, qt
 # aqt                   - another qt installer (https://aqtinstall.readthedocs.io/en/latest/)
